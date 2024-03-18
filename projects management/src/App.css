@@ -1,0 +1,15 @@
+.add-button{
+  background: #5b6565;
+    padding: 13px 68px;
+    border: none;
+    border-radius: 10px;
+    font-size: large;
+    cursor: pointer;
+}
+.add-button:hover{
+  background-color: #6f7575;
+}
+.get-started-btn{
+  background-color: black!important;
+  color: white !important;
+}
