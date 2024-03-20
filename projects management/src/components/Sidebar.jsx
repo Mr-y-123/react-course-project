@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { ContextData } from '../store/DataContextProvider'
 const Sidebar = ({children}) => {
   const {handleNewProject}=useContext(ContextData)
+  
   return (
     <GridItem
       rowSpan={2}

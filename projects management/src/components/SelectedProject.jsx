@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { ContextData } from '../store/DataContextProvider'
+import Task from './Task';
 import {
   
   Card,
@@ -17,6 +18,7 @@ const SelectedProject = ({ selectedProject}) => {
     month:"short",
     day:"numeric"
    }) 
+
   return (
     <Card w={"70%"}>
       <CardBody>
@@ -30,9 +32,7 @@ const SelectedProject = ({ selectedProject}) => {
           <Text>{selectedProject.description}</Text>
         </CardBody>
         <hr />
-        <Heading as={"h1"} size={"md"}>
-          Task
-        </Heading>
+        <Task/>
       </CardBody>
     </Card>
   );

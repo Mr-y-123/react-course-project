@@ -1,6 +1,6 @@
 import { Container, ButtonGroup, Button } from "@chakra-ui/react";
 import Inputs from "./Inputs";
-import { useRef} from "react";
+import {useRef} from "react";
 import { useContext } from "react";
 import { ContextData } from "../store/DataContextProvider";
 const NewProject = () => {    
@@ -9,12 +9,14 @@ const NewProject = () => {
    const description=useRef()
    const dueDate=useRef()
    
+   
    const handleSubmit=(e)=>{
         e.preventDefault()
         const enterTitleValue=title.current.value
         const enterDescriptionValue=description.current.value
         const enterDueDateValue=dueDate.current.value
         handleAddProject({title:enterTitleValue,description:enterDescriptionValue,dueDate:enterDueDateValue})
+        e.target.reset()
    } 
    
     return (
