@@ -15,7 +15,7 @@ const Task = () => {
   const [taskValue, setTaskValue] = useState("");
   const { projects, handleAddTask } = useContext(ContextData);
   const taskLists=projects.tasks?.filter((task)=>task.projectId===projects.selectedProjectId)
-//   console.log(taskLists);
+
   const handleShowInput = () => {
     setShowInput((previousState)=>!previousState);
   };
@@ -50,7 +50,7 @@ const Task = () => {
           </Button>
         </Flex>
       )}
-      <TaskList taskLists={taskLists}/>
+      <TaskList taskLists={taskLists}  />
     </Container>
   );
 };

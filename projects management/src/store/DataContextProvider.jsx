@@ -9,6 +9,7 @@ export const ContextData = createContext({
   handleCancel: () => {},
   handleAddTask: () => {},
   handleDeleteTask: () => {},
+  handleEditTask: () => {},
 });
 
 const DataContextProvider = ({ children }) => {
@@ -75,7 +76,7 @@ const DataContextProvider = ({ children }) => {
       JSON.stringify({
         selectedProjectId: undefined,
         projects: projectState.projects.filter((project) => project.id !== id),
-        tasks:projectState.tasks.filter((task)=>task.projectId!==id)
+        tasks: projectState.tasks.filter((task) => task.projectId !== id),
       })
     );
     setProjectState(JSON.parse(localStorage.getItem("projects")));
@@ -98,7 +99,6 @@ const DataContextProvider = ({ children }) => {
     setProjectState(JSON.parse(localStorage.getItem("projects")));
   };
   const handleDeleteTask = (taskId) => {
-    // console.log(taskId);
     localStorage.setItem(
       "projects",
       JSON.stringify({
@@ -107,9 +107,28 @@ const DataContextProvider = ({ children }) => {
       })
     );
     setProjectState(JSON.parse(localStorage.getItem("projects")));
-
   };
 
+  const handleEditTask = (editData) => {
+    const editableArray = [...projectState.tasks];
+    const editIndex = editableArray.findIndex(
+      (task) => task.taskId === editData.editId
+    );
+    const { projectId } = editableArray[editIndex];
+    editableArray.splice(editIndex, 1, {
+      taskId: editData.editId,
+      task: editData.editValue,
+      projectId,
+    });
+    localStorage.setItem(
+      "projects",
+      JSON.stringify({
+        ...projectState,
+        tasks: editableArray,
+      })
+    );
+    setProjectState(JSON.parse(localStorage.getItem("projects")));
+  };
   const CtxValue = {
     projects: projectState,
     handleSelectProject,
@@ -119,6 +138,7 @@ const DataContextProvider = ({ children }) => {
     handleCancel,
     handleAddTask,
     handleDeleteTask,
+    handleEditTask,
   };
   return (
     <ContextData.Provider value={CtxValue}>{children}</ContextData.Provider>
