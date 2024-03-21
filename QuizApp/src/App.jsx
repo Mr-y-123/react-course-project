@@ -8,7 +8,7 @@ import Prime from './components/Prime.jsx'
 function App() {
   console.log('<App/> render')
   const [chosenCount,setChosenCount]=useState(0)
- 
+  
   const handleSetCount=(newCount)=>{
     setChosenCount(newCount)
   }
@@ -18,7 +18,6 @@ function App() {
       <Header/>
       <Main  onSet={handleSetCount}/>
       <Counter initialCount={chosenCount} key={chosenCount}/>
-      {/* <Counter initialCount={chosenCount}/> */}
     </Container>
   )
 }
