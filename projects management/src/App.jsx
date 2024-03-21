@@ -9,15 +9,15 @@ import { useContext } from "react";
 import { ContextData } from "./store/DataContextProvider";
 function App() {
   const {projects}=useContext(ContextData)
-
+  console.log("<App/> is Render");
   const selectedProject = projects.projects.find(
     (project) => project.id === projects.selectedProjectId
   );
 
-  let content = (
-    <SelectedProject selectedProject={selectedProject}/>
-  );
-
+  let content 
+  if(selectedProject){
+    content=<SelectedProject selectedProject={selectedProject}/>
+  }    
   if (projects.selectedProjectId === null) {
     content = (
       <NewProject
