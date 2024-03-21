@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { ContextData } from "../store/DataContextProvider";
 const NewProject = () => {    
   const {handleAddProject,handleCancel}=useContext(ContextData)
+    console.log("<NewProject/> is Render");
    const title=useRef()
    const description=useRef()
    const dueDate=useRef()

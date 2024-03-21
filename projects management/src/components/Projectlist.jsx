@@ -1,9 +1,9 @@
 import { Heading, List, ListItem, Container } from "@chakra-ui/react";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { ContextData } from "../store/DataContextProvider";
-const ProjectsList = () => {
+const ProjectsList = memo(function ProjectList(){
   const {projects,handleSelectProject}=useContext(ContextData)
-
+  console.log("<ProjectList/> is Render");
   return (
     <Container marginTop={"30px"}>
       <Heading as={"h2"} size={"md"}>
@@ -28,6 +28,6 @@ const ProjectsList = () => {
       </List>
     </Container>
   );
-};
+});
 
 export default ProjectsList;

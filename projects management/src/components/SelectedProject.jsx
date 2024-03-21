@@ -12,7 +12,8 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 const SelectedProject = ({ selectedProject}) => {
-    const {handleDeleteProject}=useContext(ContextData)
+  const {handleDeleteProject}=useContext(ContextData)
+  console.log("<SelectedProject/> is Render");
    const formateDate=new Date(selectedProject.dueDate).toLocaleDateString('en-US',{
     year:"numeric",
     month:"short",

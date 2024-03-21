@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { ContextData } from '../store/DataContextProvider'
 const NoProjectSelected = () => {
   const {handleNewProject}=useContext(ContextData)
+  console.log("<NoProjectSelected/> is Render");
   return (
     <Container centerContent>
         <Heading as={'h2'}>No Project Selected</Heading>
