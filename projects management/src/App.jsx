@@ -10,20 +10,20 @@ import { ContextData } from "./store/DataContextProvider";
 function App() {
   const {projects}=useContext(ContextData)
   console.log("<App/> is Render");
-  const selectedProject = projects.projects.find(
-    (project) => project.id === projects.selectedProjectId
+  const selectedProject = projects?.projects.find(
+    (project) => project.id === projects?.selectedProjectId
   );
 
   let content 
   if(selectedProject){
     content=<SelectedProject selectedProject={selectedProject}/>
   }    
-  if (projects.selectedProjectId === null) {
+  if (projects&&projects.selectedProjectId === null) {
     content = (
       <NewProject
       />
     );
-  } else if (projects.selectedProjectId === undefined) {
+  } else if (projects&&projects.selectedProjectId === undefined) {
     content = <NoProjectSelected/>;
   }
   return (

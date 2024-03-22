@@ -10,7 +10,7 @@ const ProjectsList = memo(function ProjectList(){
         Projects List
       </Heading>
       <List spacing={"10px"} h={"500px"} overflowY={"auto"} padding={"10px"}>
-        {projects.projects.map((project) => (
+        {projects?.projects.map((project) => (
           <ListItem
             key={project.id}
             overflowWrap={"anywhere"}

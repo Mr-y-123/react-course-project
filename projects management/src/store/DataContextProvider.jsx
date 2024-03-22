@@ -1,5 +1,5 @@
-import { createContext, useState } from "react";
-import { useEffect } from "react";
+import { createContext} from "react";
+import useFetch from "../components/hooks/useFetch";
 export const ContextData = createContext({
   projects: [],
   handleSelectProject: () => {},
@@ -13,26 +13,8 @@ export const ContextData = createContext({
 });
 
 const DataContextProvider = ({ children }) => {
-  const [projectState, setProjectState] = useState({
-    selectedProjectId: undefined,
-    projects: [],
-    tasks: [],
-  });
-  useEffect(() => {
-    const projectsData = localStorage.getItem("projects");
-    if (!projectsData) {
-      localStorage.setItem(
-        "projects",
-        JSON.stringify({
-          selectedProjectId: undefined,
-          projects: [],
-          tasks: [],
-        })
-      );
-    } else {
-      setProjectState(JSON.parse(projectsData));
-    }
-  }, []);
+  const {projectState,setProjectState}=useFetch()
+  console.log("context",projectState);
   const handleSelectProject = (id) => {
     localStorage.setItem(
       "projects",
