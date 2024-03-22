@@ -5,9 +5,11 @@ function demoFunc(count){
     return `Number of Count ${count}`
 }
 
+
+
 const Counter=memo(function Counter({ initialCount }){
   console.log("<Counter/> render");
-  const demoCountNumber=demoFunc(initialCount)
+  const demoCountNumber=useMemo(()=>demoFunc(initialCount),[initialCount])
   const [count, setCount] = useState(initialCount);
 //   useEffect(()=>{
 //     setCount(initialCount)
