@@ -62,8 +62,10 @@ const Form = () => {
     const data=Object.fromEntries(fd.entries())
     data.checkBoxValue=checkBoxData  
     if(data.password!==data['confirm-password']){
-        setPasswordNotMatch(true)
+      return setPasswordNotMatch(true)
+         
     }
+    setPasswordNotMatch(false)
      console.log(data);
   };
 
