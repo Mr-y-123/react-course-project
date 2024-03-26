@@ -1,0 +1,37 @@
+[
+    {
+        "id":"m1",
+        "name":"Caesar Salad",
+        "description":"Romanin and Hot milk pound to moke and Round of",
+        "image":"images/food1.jpg",
+        "price":45
+    },
+    {
+        "id":"m2",
+        "name":"Remon Delta",
+        "description":"Romanin and Hot milk pound to moke and Round of",
+        "image":"images/food2.jpg",
+        "price":80
+    },
+    {
+        "id":"m3",
+        "name":"Caesar Salad",
+        "description":"Romanin and Hot milk pound to moke and Round of",
+        "image":"images/food3.jpg",
+        "price":60
+    } ,
+    {
+        "id":"m4",
+        "name":"Caesar Salad",
+        "description":"Romanin and Hot milk pound to moke and Round of",
+        "image":"images/food4.jpg",
+        "price":74
+    } ,
+    {
+        "id":"m5",
+        "name":"Caesar Salad",
+        "description":"Romanin and Hot milk pound to moke and Round of",
+        "image":"images/food5.jpg",
+        "price":43
+    }     
+]

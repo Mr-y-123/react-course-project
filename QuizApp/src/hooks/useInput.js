@@ -1,7 +1,7 @@
 import { useState } from "react"
 const useInput=(defaultValue,validFunc)=>{
-    const [enterdValue,setEnterdValue]=useState(defaultValue) 
-   const [didEdit,setDidEdit]=useState(false)
+  const [enterdValue,setEnterdValue]=useState(defaultValue) 
+  const [didEdit,setDidEdit]=useState(false)
   
   const handleChangeInput=(e)=>{
     setEnterdValue(e.target.value)
