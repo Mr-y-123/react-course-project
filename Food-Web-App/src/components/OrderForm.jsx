@@ -1,13 +1,50 @@
-import {ModalHeader,ModalCloseButton,ModalBody,ModalFooter,FormControl,FormLabel,Input, Heading} from '@chakra-ui/react'
-const OrderForm=({toalamount})=>{
+import {ModalHeader,ModalCloseButton,ModalBody,FormControl,FormLabel,Input, Heading,ButtonGroup,Button} from '@chakra-ui/react'
+import {ArrowBackIcon} from '@chakra-ui/icons'
+import { useContext, useState } from 'react'
+import {UserProgresContext} from '../store/UserProgresContext'
+import {CartContext} from '../store/CartContext'
+const OrderForm=({toalamount,Items})=>{
+
+    const [isLoading,setLoading]=useState(false)
+    const {handleShowCart}=useContext(UserProgresContext)
+    const {handleClearCart}=useContext(CartContext)
+    const handleSubmit=async(e)=>{
+        e.preventDefault()
+       const formData=new FormData(e.target)
+       const customerData=Object.fromEntries(formData.entries())
+        try{
+            setLoading(true)
+            const response=await fetch('/api/order',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    order:{
+                        Items,
+                        customer:customerData
+                    }
+                })
+               })
+               setLoading(false)
+               if(response.ok){
+                    handleShowCart(),
+                    handleClearCart()    
+               }
+        }
+        catch(error){
+            console.log("Error:",error);
+        }
+       
+    }
     return (
         <>
-        <ModalHeader>Order Items
-            <Heading as={'h2'} size={'md'}>Total Amount :${toalamount}</Heading>
+        <ModalHeader> <ArrowBackIcon onClick={handleShowCart} cursor={'pointer'}/>
+            <Heading as={'h2'} size={'md'}> Total Amount :${toalamount}</Heading>
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <form action="">
+          <form action="" onSubmit={handleSubmit}>
             <FormControl>
                 <FormLabel>Full name</FormLabel>
                 <Input placeholder='Enter name' type='text' name='fullName' required/>
@@ -26,13 +63,14 @@ const OrderForm=({toalamount})=>{
             </FormControl>
             <FormControl>
                 <FormLabel>City</FormLabel>
-                <Input placeholder='Enter city' type='text' required/>
+                <Input placeholder='Enter city' type='text' name='city' required/>
             </FormControl>
+            <ButtonGroup marginTop={'10px'} display={'flex'} float={'inline-end'}>
+                <Button>Cancel</Button>
+                <Button className='checkOu-btn' type='submit'>{isLoading?'Loding..':'Order'}</Button>
+            </ButtonGroup>
           </form>
         </ModalBody>
-        <ModalFooter display={"flex"} justifyContent={"space-between"}>
-          
-        </ModalFooter>
         </>
     )
 }

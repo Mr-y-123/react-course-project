@@ -1,5 +1,6 @@
-import { Container, Grid, Heading, Spinner } from "@chakra-ui/react";
+import { Container, Grid, Spinner } from "@chakra-ui/react";
 import Cards from "./Card";
+import Errorpage from "./Errorpage";
 const Meals = ({mealsData,isLoading}) => {
   let content;
   
@@ -25,7 +26,7 @@ const Meals = ({mealsData,isLoading}) => {
     );
   }
   else{
-    content=<Heading as={'h1'} size={'md'}>Not Found Data</Heading>
+    content=<Errorpage/>
   }
 
   return <>{content}</>;

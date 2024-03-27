@@ -15,7 +15,7 @@
   background-color: transparent !important;
   color: rgb(245, 170, 9) !important;
 }
-.checkOut-btn{
+.checkOu-btn{
   background-color: rgb(245, 170, 9) !important;
   color: black IM !important;
 }
@@ -24,7 +24,6 @@
 }
 .action-items-quantity .AddIcon{
   border: 1px solid;
-    /* padding: 10px; */
     color: black;
     background: #f5aa09;
     width: 30px;
